@@ -181,20 +181,6 @@ void thread_stop(thread_t *thread) {
   reactor_stop(thread->reactor);
 }
 
-bool thread_set_priority(thread_t *thread, int priority) {
-  if (!thread)
-    return false;
-
-  const int rc = setpriority(PRIO_PROCESS, thread->tid, priority);
-  if (rc < 0) {
-    LOG_ERROR("%s unable to set thread priority %d for tid %d, error %d",
-      __func__, priority, thread->tid, rc);
-    return false;
-  }
-
-  return true;
-}
-
 bool thread_is_self(const thread_t *thread) {
   assert(thread != NULL);
   return !!pthread_equal(pthread_self(), thread->pthread);
