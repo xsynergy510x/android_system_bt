@@ -363,7 +363,7 @@ void btif_config_flush(void) {
   pthread_mutex_unlock(&lock);
 }
 
-int btif_config_clear(void){
+bool btif_config_clear(void){
   assert(config != NULL);
   assert(alarm_timer != NULL);
 
@@ -378,7 +378,7 @@ int btif_config_clear(void){
     return false;
   }
 
-  int ret = config_save(config, CONFIG_FILE_PATH);
+  bool ret = config_save(config, CONFIG_FILE_PATH);
   pthread_mutex_unlock(&lock);
   return ret;
 }

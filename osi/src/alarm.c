@@ -169,7 +169,8 @@ static void alarm_set_internal(alarm_t *alarm, period_ms_t period, alarm_callbac
 
 void alarm_cancel(alarm_t *alarm) {
   assert(alarms != NULL);
-  assert(alarm != NULL);
+  if (!alarm)
+    return;
 
   pthread_mutex_lock(&monitor);
 
