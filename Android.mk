@@ -40,6 +40,8 @@ bdroid_CFLAGS += \
   -UNDEBUG \
   -DLOG_NDEBUG=1
 
+bdroid_CFLAGS += -Os
+
 include $(call all-subdir-makefiles)
 
 # Cleanup our locals
